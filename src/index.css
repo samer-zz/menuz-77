@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #ff7a1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #060d1f;
+  color: #f1f5f9;
+  font-family: 'Cairo', 'Tajawal', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* خلفية مستوحاة من شعار مينوز: طبقات بطاقة + نقاط QR */
+.bg-menuz {
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(255, 122, 26, 0.16), transparent 60%),
+    radial-gradient(800px 500px at 10% 0%, rgba(22, 64, 127, 0.55), transparent 60%),
+    linear-gradient(180deg, #060d1f 0%, #081230 45%, #060d1f 100%);
+}
+
+.bg-qr-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.bg-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 122, 26, 0.14) 0 10px,
+    transparent 10px 22px
+  );
+}
+
+.text-glow {
+  text-shadow: 0 0 24px rgba(255, 122, 26, 0.45);
+}
+
+/* شريط عروض متحرك */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* بخار يتصاعد من شعار الجهة */
+@keyframes steam {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  25% { opacity: 0.8; }
+  100% { transform: translateY(-26px) scaleX(1.4); opacity: 0; }
+}
+.steam span {
+  display: inline-block;
+  animation: steam 2.6s ease-in-out infinite;
+}
+.steam span:nth-child(2) { animation-delay: 0.5s; }
+.steam span:nth-child(3) { animation-delay: 1s; }
+
+/* ظهور تدريجي للبطاقات */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise 0.5s ease both; }
+
+/* إخفاء شريط التمرير الأفقي */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* حقول الإدخال */
+.field {
+  @apply w-full rounded-xl bg-navy-800/80 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 transition;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 hover:bg-brand-400 active:scale-[0.98] text-white font-bold px-5 py-3 text-sm transition shadow-glow;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 font-semibold px-5 py-3 text-sm transition;
+}
+
+.card {
+  @apply rounded-2xl bg-navy-800/70 border border-white/10 backdrop-blur;
+}
