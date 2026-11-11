@@ -61,6 +61,14 @@ GitHub (samer-zz/menuz-77)
 5. اضغط **Deploy**. سيظهر رابط الموقع خلال دقيقة.
 6. بعد النشر: حدّث رابط الموقع في Supabase ← Authentication ← URL Configuration ← Site URL إلى رابط Vercel.
 
+> ⚠️ **خطوة مهمة — إلغاء حماية Vercel (SSO):**
+> عند إنشاء المشروع عبر API قد تُفعَّل حماية "Vercel Authentication" التي تمنع الزبائن من فتح الموقع (تظهر صفحة تسجيل دخول Vercel). لإلغائها:
+> 1. افتح مشروع `menuz-77` في Vercel ← **Settings** ← **Deployment Protection**
+> 2. أطفئ **Vercel Authentication** (SSO) ← **Save**
+> 3. حدّث الموقع (Refresh) — سيعمل المنيو للجميع فوراً.
+>
+> إذا لم تجد الخيار: تأكد أنك في **Production** وليس Preview، أو أعد النشر بعد الإيقاف.
+
 > ⚠️ مفتاح `anon` آمن للنشر في الواجهة (مصمم لذلك + محمي بسياسات RLS). لا تنشر أبداً مفتاح `service_role`.
 
 ---
